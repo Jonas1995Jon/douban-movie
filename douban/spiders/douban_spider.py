@@ -17,6 +17,7 @@ class DoubanSpiderSpider(scrapy.Spider):
             douban_item = DoubanItem()
             douban_item['serial_number'] = i_item.xpath(".//div[@class='item']//em/text()").extract_first()
             douban_item['movie_name'] = i_item.xpath(".//div[@class='info']/div[@class='hd']/a/span[1]/text()").extract_first()
+            douban_item['movie_img'] = i_item.xpath(".//div[@class='pic']//img/@src").extract_first()
             content = i_item.xpath(".//div[@class='info']//div[@class='bd']/p[1]/text()").extract()
             for i_content in content:
                 content_s = "".join(i_content.split())

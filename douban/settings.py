@@ -8,6 +8,7 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+import os
 
 BOT_NAME = 'douban'
 
@@ -67,9 +68,17 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'douban.pipelines.DoubanPipeline': 300,
-   # 'douban.pipelines.JsonWithEncoding': 2,
+   # 'douban.pipelines.DoubanPipeline': 300,
+   # 'douban.pipelines.MySQLPipeline': 301,
+   # 'douban.pipelines.JsonWithEncoding': 302,
+   'douban.pipelines.ImagespiderPipeline': 303,
 }
+
+absPath = os.path.abspath(os.path.dirname(__file__))
+path = os.path.join(absPath, 'images')
+
+#图片存储位置
+IMAGES_STORE = path
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

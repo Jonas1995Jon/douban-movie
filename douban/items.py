@@ -13,6 +13,7 @@ class DoubanItem(scrapy.Item):
     # name = scrapy.Field()
     serial_number = scrapy.Field() # 序号
     movie_name = scrapy.Field() # 电影名称
+    movie_img = scrapy.Field() # 封面图
     introduce = scrapy.Field() # 介绍
     star = scrapy.Field() # 星级
     evaluate = scrapy.Field() # 评论数
